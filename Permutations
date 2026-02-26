@@ -1,0 +1,15 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        sol = []
+        if (len(nums)<=1):
+            sol.append(nums)
+            return sol
+        else:
+            #more than one so 
+            first = nums[0]
+            next_sol = self.permute(nums[1:])
+            for i in next_sol:
+                for j in range(len(i)+1):
+                    sol.append(i[0:j]+[first]+i[j:])
+        return sol
+        
