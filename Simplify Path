@@ -1,0 +1,16 @@
+class Solution:
+    def simplifyPath(self, path: str) -> str:
+        s=[]
+        p=path.split('/')
+        for i in p:
+            if i=="..." or i.isalpha():
+                s.append(i)
+            elif s and i=="..":
+                s.pop()
+            else:
+                if i!="" and (len(i)>2 or i[-1].isalpha()):
+                    s.append(i)
+        a=[]
+        for i in s:
+            a.append('/'+i)
+        return "".join(a) if s else '/'
