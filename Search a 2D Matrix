@@ -1,0 +1,13 @@
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        findex = 0
+        lindex = len(matrix)-1
+        while findex <= lindex:
+            mid = findex + (lindex-findex)//2
+            if target in matrix[mid]:
+                return True
+            elif target > matrix[mid][-1]:
+                findex = mid + 1
+            else:
+                lindex = mid - 1
+        return False
