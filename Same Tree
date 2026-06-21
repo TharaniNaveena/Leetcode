@@ -1,0 +1,21 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def traverse(self, node, data_ref):
+        if node is None:
+            return None
+        
+        data_ref.append( node.val )
+        data_ref.append( self.traverse(node.left, data_ref) )
+        data_ref.append( self.traverse(node.right, data_ref) )
+
+    def isSameTree(self, p, q):
+        p_data = []
+        q_data = []
+        self.traverse(p, p_data)
+        self.traverse(q, q_data)
+        return p_data == q_data
